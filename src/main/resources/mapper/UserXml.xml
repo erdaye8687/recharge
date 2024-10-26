@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dapang.recharge.mapper.UserMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.dapang.recharge.pojo.po.UserPO">
+        <id column="id" property="id" />
+        <result column="username" property="username" />
+        <result column="email" property="email" />
+        <result column="phone_number" property="phoneNumber" />
+        <result column="role" property="role" />
+        <result column="parent_id" property="parentId" />
+        <result column="balance" property="balance" />
+        <result column="commission_rate" property="commissionRate" />
+        <result column="password" property="password" />
+        <result column="status" property="status" />
+        <result column="last_login_time" property="lastLoginTime" />
+        <result column="create_time" property="createTime" />
+        <result column="update_time" property="updateTime" />
+        <result column="creator" property="creator" />
+        <result column="operator" property="operator" />
+        <result column="is_deleted" property="isDeleted" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, username, email, phone_number, role, parent_id, balance, commission_rate, password, status, last_login_time, create_time, update_time, creator, operator, is_deleted
+    </sql>
+
+</mapper>
