@@ -45,8 +45,9 @@ public interface ErrorCodeConstants {
     ErrorCode USER_COUNT_MAX = new ErrorCode(1_002_003_008, "创建用户失败，原因：超过租户最大租户配额({})！");
     ErrorCode USER_IMPORT_INIT_PASSWORD = new ErrorCode(1_002_003_009, "初始密码不能为空");
 
-    // ========== 部门模块 1-002-004-000 ==========
-    ErrorCode DEPT_NAME_DUPLICATE = new ErrorCode(1_002_004_000, "已经存在该名字的部门");
+    // ========== 订单模块 1-002-004-000 ==========
+    ErrorCode ORDER_NUM_INSUFFICIENT = new ErrorCode(1_002_004_000, "订单数量不足");
+    ErrorCode ORDER_UPDATE_STATUS_FAILED = new ErrorCode(1_002_004_001, "更新订单状态失败");
     ErrorCode DEPT_PARENT_NOT_EXITS = new ErrorCode(1_002_004_001,"父级部门不存在");
     ErrorCode DEPT_NOT_FOUND = new ErrorCode(1_002_004_002, "当前部门不存在");
     ErrorCode DEPT_EXITS_CHILDREN = new ErrorCode(1_002_004_003, "存在子部门，无法删除");

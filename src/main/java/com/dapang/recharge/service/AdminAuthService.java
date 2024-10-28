@@ -1,6 +1,7 @@
 package com.dapang.recharge.service;
 
 import com.dapang.recharge.pojo.vo.AuthLoginRespVO;
+import com.dapang.recharge.pojo.vo.UserSaveReqVO;
 
 /**
  * @author liangjy
@@ -16,4 +17,12 @@ public interface AdminAuthService {
      * @return token
      */
     AuthLoginRespVO login(String username, String password);
+
+    /**
+     * 创建用户
+     *
+     * @param reqVO 用户信息
+     * @return 用户信息
+     */
+    Long createUser(UserSaveReqVO reqVO);
 }

@@ -1,11 +1,13 @@
 package com.dapang.recharge.service.impl;
 
+import cn.hutool.core.bean.BeanUtil;
 import com.dapang.recharge.common.enums.CommonStatusEnum;
 import com.dapang.recharge.common.enums.LoginLogTypeEnum;
 import com.dapang.recharge.common.util.JwtTokenUtil;
 import com.dapang.recharge.pojo.po.LoginUserDetails;
 import com.dapang.recharge.pojo.po.UserPO;
 import com.dapang.recharge.pojo.vo.AuthLoginRespVO;
+import com.dapang.recharge.pojo.vo.UserSaveReqVO;
 import com.dapang.recharge.service.AdminAuthService;
 import com.dapang.recharge.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +16,10 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 import static com.dapang.recharge.common.constant.ErrorCodeConstants.AUTH_LOGIN_BAD_CREDENTIALS;
 import static com.dapang.recharge.common.constant.ErrorCodeConstants.AUTH_LOGIN_USER_DISABLED;
@@ -34,6 +39,8 @@ public class AdminAuthServiceImpl implements AdminAuthService {
     private JwtTokenUtil jwtTokenUtil;
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Resource
+    private PasswordEncoder passwordEncoder;
 
     @Override
     public AuthLoginRespVO login(String username, String password) {
@@ -62,5 +69,13 @@ public class AdminAuthServiceImpl implements AdminAuthService {
         }
         String token = jwtTokenUtil.generateToken(userDetails);
         return new AuthLoginRespVO().setUserId(user.getId()).setUserType(user.getRole()).setRefreshToken(token);
+    }
+
+    @Override
+    public Long createUser(UserSaveReqVO reqVO) {
+        UserPO userPO = BeanUtil.toBean(reqVO, UserPO.class);
+        userPO.setPassword(passwordEncoder.encode(reqVO.getPassword()));
+        userService.save(userPO);
+        return userPO.getId();
     }
 }

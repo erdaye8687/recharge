@@ -1,31 +1,13 @@
-package com.dapang.recharge.pojo.po;
-
-import java.math.BigDecimal;
+package com.dapang.recharge.pojo.vo;
 
 import lombok.Data;
 import lombok.experimental.Accessors;
 
-/**
- * <p>
- * 订单表
- * </p>
- *
- * @author cainiao
- * @since 2024-10-20 11:16:39
- */
+import java.math.BigDecimal;
+
 @Data
 @Accessors(chain = true)
-public class OrderPO extends BasePO {
-
-    /**
-     * 代理ID
-     */
-    private Long userId;
-
-    /**
-     * 供货商ID
-     */
-    private Long supplierId;
+public class OrderPoolRespVO {
 
     /**
      * 商品ID
@@ -53,12 +35,7 @@ public class OrderPO extends BasePO {
     private Integer status;
 
     /**
-     * 代理提成
+     * 待领取的订单数量
      */
-    private BigDecimal commission;
-
-    /**
-     * 汇率
-     */
-    private BigDecimal currencyRate;
+    private Integer orderCount;
 }

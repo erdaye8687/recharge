@@ -71,11 +71,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 // 过滤请求
                 .authorizeRequests()
+                .antMatchers("/recharge/user/login").permitAll()
                 // 除上面外的所有请求全部需要鉴权认证
                 .anyRequest()
                 // 本地调试可以设置为不校验
-//                .permitAll()
-                .authenticated()
+                .permitAll()
+//                .authenticated()
                 .and()
                 // 添加Logout filter
                 .logout().logoutUrl("/cdm/business/logout").logoutSuccessHandler(logoutSuccessHandler)

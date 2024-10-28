@@ -33,7 +33,7 @@ public class ttTest {
         String password="328687";
 
         //数据库表的设置
-        List<String> listTable = Arrays.asList("order", "order_detail");  //设置需要自动代码生成的表名
+        List<String> listTable = Arrays.asList("product");  //设置需要自动代码生成的表名
         List<String> listTableSuffix = Arrays.asList("_b");    //设置 过滤 表的后缀
         List<String> listTablePrefix = Arrays.asList("t_","c_"); //设置 过滤 表的后缀
 
@@ -111,7 +111,7 @@ public class ttTest {
                             .enableBaseColumnList() //启用 BaseColumnList
                             .formatMapperFileName("%sMapper")   //格式化 mapper 文件名称
                             .enableMapperAnnotation()       //开启 @Mapper 注解
-                            .formatXmlFileName("%sXml") //格式化Xml文件名称
+                            .formatXmlFileName("%sMapper") //格式化Xml文件名称
                             .formatMapperFileName("%sMapper");   //格式化Mapper文件名称
 
                 })

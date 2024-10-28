@@ -3,6 +3,7 @@ package com.dapang.recharge.controller;
 import com.dapang.recharge.common.pojo.Result;
 import com.dapang.recharge.pojo.vo.AuthLoginReqVO;
 import com.dapang.recharge.pojo.vo.AuthLoginRespVO;
+import com.dapang.recharge.pojo.vo.UserSaveReqVO;
 import com.dapang.recharge.service.AdminAuthService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,10 @@ public class UserController {
     @PostMapping("/login")
     public Result<AuthLoginRespVO> login(@RequestBody @Valid AuthLoginReqVO reqVO) {
         return success(adminAuthService.login(reqVO.getUsername(), reqVO.getPassword()));
+    }
+
+    @PostMapping("/create")
+    public Result<Long> create(@RequestBody @Valid UserSaveReqVO reqVO) {
+        return success(adminAuthService.createUser(reqVO));
     }
 }

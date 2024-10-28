@@ -3,6 +3,7 @@ package com.dapang.recharge.pojo.po;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 
 /**
@@ -14,6 +15,7 @@ import lombok.Data;
  * @since 2024-10-20 09:14:25
  */
 @Data
+@TableName("user")
 public class UserPO extends BasePO {
 
     /**

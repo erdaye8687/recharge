@@ -2,6 +2,7 @@ package com.dapang.recharge.common.config;
 
 import com.alibaba.fastjson2.JSON;
 import com.dapang.recharge.common.util.JwtTokenUtil;
+import com.dapang.recharge.common.util.WebFrameworkUtils;
 import com.dapang.recharge.pojo.po.LoginUserDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -42,7 +43,8 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
             authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
             SecurityContextHolder.getContext().setAuthentication(authenticationToken);
             // 账号id放入请求头中
-//            customHttpServletRequest.addHeader("puid", userDetails.getCdmAccountPO().getId().toString());
+            WebFrameworkUtils.setLoginUserId(request, userDetails.getUserPO().getId());
+            WebFrameworkUtils.setLoginUserType(request, userDetails.getUserPO().getRole());
         }
         filterChain.doFilter(request, response);
     }
